@@ -93,7 +93,7 @@
         .section-title { font-size: 36px; font-weight: 800; text-transform: uppercase; margin-bottom: 40px; text-align: center; letter-spacing: 1px; }
         .section-title span { color: #8bb9b9; }
 
-        /* ===== НАПРАВЛЕНИЯ ===== */
+        /* ===== НАПРАВЛЕНИЯ (с полными описаниями) ===== */
         .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .program-card {
             background: rgba(255, 255, 255, 0.03);
@@ -102,7 +102,7 @@
         }
         .program-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
         .program-card h3 { font-size: 20px; margin-bottom: 10px; color: #8bb9b9; }
-        .program-card p { font-size: 16px; color: #d1e3e3; margin-bottom: 20px; }
+        .program-card p { font-size: 16px; color: #d1e3e3; margin-bottom: 20px; line-height: 1.5; }
         .program-card .btn-outline { font-size: 14px; padding: 8px 20px; }
 
         /* ===== ОПЫТ ===== */
@@ -116,21 +116,29 @@
         .exp-numbers span { display: block; font-size: 36px; font-weight: 900; color: #ffffff; }
         .exp-numbers small { color: #8bb9b9; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
-        /* ===== ЦЕНА (ДИНАМИЧЕСКИЙ БЛОК) ===== */
-        .price-card { max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        .price-value { font-size: 56px; font-weight: 900; color: #ffffff; transition: 0.3s; line-height: 1.2; }
-        .price-list { text-align: left; margin: 25px 0 30px; list-style: none; padding: 0; min-height: 90px; transition: 0.3s; }
-        .price-list li { padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 15px; font-size: 16px; color: #e0f0f0; }
-        .price-list li::before { content: "✓"; color: #8bb9b9; font-weight: 900; font-size: 20px; }
-        
-        .service-selector {
-            width: 100%; padding: 14px 16px; border-radius: 12px;
-            border: 1px solid rgba(139, 185, 185, 0.3); background: rgba(255, 255, 255, 0.05);
-            color: #ffffff; font-size: 16px; font-family: inherit; outline: none; transition: 0.2s;
-            margin-bottom: 25px; text-align: center; cursor: pointer;
+        /* ===== ФОРМАТЫ РАБОТЫ (все услуги сразу) ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
-        .service-selector:focus { border-color: #8bb9b9; background: rgba(255, 255, 255, 0.1); }
-        .service-selector option { background: #0b1a1a; color: #fff; }
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 185, 185, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
+        .service-card h3 { font-size: 22px; color: #ffffff; margin-bottom: 5px; }
+        .service-card .price-tag { font-size: 28px; font-weight: 900; color: #8bb9b9; margin-bottom: 15px; display: block; }
+        .service-card ul { list-style: none; padding: 0; margin: 15px 0 25px; flex: 1; }
+        .service-card ul li { padding: 6px 0; color: #cce3e3; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+        .service-card ul li::before { content: "—"; color: #8bb9b9; }
+        .service-card p { color: #cce3e3; font-size: 16px; }
 
         /* ===== КОНТАКТЫ ===== */
         .contacts-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(139, 185, 185, 0.2); }
@@ -192,7 +200,7 @@
         }
         @media (max-width: 600px) {
             .hero-name { font-size: 32px; }
-            .price-value { font-size: 40px; }
+            .services-grid { grid-template-columns: 1fr; }
             .contacts-wrapper { flex-direction: column; text-align: center; }
             .contacts-info a { justify-content: center; }
             .btn-primary, .btn-outline { width: 100%; }
@@ -220,7 +228,7 @@
         </div>
     </section>
 
-    <!-- ===== НАПРАВЛЕНИЯ ===== -->
+    <!-- ===== НАПРАВЛЕНИЯ (Тексты как на 2-й странице) ===== -->
     <section class="section container" id="directions">
         <h2 class="section-title">
             <span>Направ</span><span>ления</span>
@@ -228,7 +236,7 @@
         <div class="program-grid">
             <div class="program-card">
                 <h3>ОФП для детей</h3>
-                <p>Развитие координации, силы и выносливости с ранних лет. Закладка спортивной базы.</p>
+                <p>Общее укрепление организма с целью профилактики травм и болезней опорно-двигательного аппарата так же сердечно-сосудистой системы для здорового и гармоничного развития ребенка.</p>
                 <a href="programs.html" class="btn-outline">Подробнее</a>
             </div>
             <div class="program-card">
@@ -284,31 +292,58 @@
         </div>
     </section>
 
-    <!-- ===== ДИНАМИЧЕСКАЯ ЦЕНА ===== -->
+    <!-- ===== ФОРМАТЫ РАБОТЫ (Все услуги сразу, без выбора) ===== -->
     <section class="section container" id="price">
         <h2 class="section-title">
-            <span>Стои</span><span>мость</span><br>
-            <span>уча</span><span>стия</span>
+            <span>Форма</span><span>ты</span>
+            <br>
+            <span>рабо</span><span>ты</span>
         </h2>
-        <div class="price-card">
+        
+        <div class="services-grid">
             
-            <select class="service-selector" id="mainServiceSelector" onchange="updateMainPrice()">
-                <option value="individual">Индивидуальная тренировка (3 000₽)</option>
-                <option value="online_consult">Онлайн-Консультация (5 000₽)</option>
-                <option value="online_support">Онлайн-Сопровождение (10 000₽)</option>
-                <option value="group">Групповые занятия (12 000₽)</option>
-            </select>
-
-            <div class="price-value" id="mainPriceValue">
-                3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>
+            <!-- Услуга 1 -->
+            <div class="service-card">
+                <h3>Индивидуальная тренировка</h3>
+                <span class="price-tag">3 000 ₽ / занятие</span>
+                <p>Персональная работа с тренером один на один. Полная концентрация на ваших целях и технике.</p>
+                <a href="#" onclick="openModal('Индивидуальная тренировка', '3 000 ₽ / занятие'); return false;" class="btn-primary" style="margin-top: auto;">Записаться</a>
             </div>
-            
-            <ul class="price-list" id="mainPriceList">
-                <li>Персональная работа с тренером один на один</li>
-                <li>Полная концентрация на ваших целях и технике</li>
-            </ul>
 
-            <a href="#" onclick="openModalWithMainSelection(); return false;" class="btn-primary">Начать тренировки</a>
+            <!-- Услуга 2 -->
+            <div class="service-card">
+                <h3>Онлайн-Консультация</h3>
+                <span class="price-tag">5 000 ₽</span>
+                <ul>
+                    <li>Анализ образа жизни</li>
+                    <li>Рекомендации по питанию</li>
+                    <li>Рекомендации по тренировочному процессу</li>
+                </ul>
+                <a href="#" onclick="openModal('Онлайн-Консультация', '5 000 ₽'); return false;" class="btn-primary">Записаться</a>
+            </div>
+
+            <!-- Услуга 3 -->
+            <div class="service-card">
+                <h3>Онлайн-Сопровождение</h3>
+                <span class="price-tag">10 000 ₽ / месяц</span>
+                <ul>
+                    <li>Тренировочный план</li>
+                    <li>Коррекция питания</li>
+                    <li>Анализ режима дня</li>
+                </ul>
+                <a href="#" onclick="openModal('Онлайн-Сопровождение', '10 000 ₽ / месяц'); return false;" class="btn-primary">Записаться</a>
+            </div>
+
+            <!-- Услуга 4 -->
+            <div class="service-card">
+                <h3>Групповые занятия</h3>
+                <span class="price-tag">12 000 ₽ / месяц (12 занятий)</span>
+                <ul>
+                    <li>12 занятий в месяц</li>
+                </ul>
+                <a href="#" onclick="openModal('Групповые занятия', '12 000 ₽ / месяц (12 занятий)'); return false;" class="btn-primary" style="margin-top: auto;">Записаться</a>
+            </div>
+
         </div>
     </section>
 
@@ -328,7 +363,7 @@
                 <span>MAX</span>
                 <span>VK</span>
             </div>
-            <a href="#" onclick="openModalWithMainSelection(); return false;" class="btn-primary">Записаться</a>
+            <a href="#" onclick="openModal('', ''); return false;" class="btn-primary">Записаться</a>
         </div>
     </section>
 
@@ -358,7 +393,7 @@
                     <input type="email" id="userEmail" placeholder="Ваша электронная почта">
                 </div>
                 <div class="form-group">
-                    <select id="userProgram" onchange="updateModalPrice()" required>
+                    <select id="userProgram" required>
                         <option value="">Выберите программу *</option>
                         <option value="Индивидуальная тренировка">Индивидуальная тренировка</option>
                         <option value="Онлайн-Консультация">Онлайн-Консультация</option>
@@ -378,95 +413,35 @@
 
     <!-- ===== СКРИПТ ===== -->
     <script>
-        // Инициализация EmailJS с твоим Public Key
+        // Инициализация EmailJS
         (function() {
             emailjs.init({
                 publicKey: '2UMeMhy4aJizV6SAW'
             });
         })();
 
-        // Данные об услугах с ценами для интерфейса
-        const serviceData = {
-            'individual': {
-                priceDisplay: '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>',
-                list: ['Персональная работа с тренером один на один', 'Полная концентрация на ваших целях и технике'],
-                selectValue: 'Индивидуальная тренировка',
-                bottomPrice: '3 000 ₽ / занятие'
-            },
-            'online_consult': {
-                priceDisplay: '5 000 ₽',
-                list: ['Анализ образа жизни', 'Рекомендации по питанию', 'Рекомендации по тренировочному процессу'],
-                selectValue: 'Онлайн-Консультация',
-                bottomPrice: '5 000 ₽'
-            },
-            'online_support': {
-                priceDisplay: '10 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц</span>',
-                list: ['Тренировочный план', 'Коррекция питания', 'Анализ режима дня'],
-                selectValue: 'Онлайн-Сопровождение',
-                bottomPrice: '10 000 ₽ / месяц'
-            },
-            'group': {
-                priceDisplay: '12 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц (12 занятий)</span>',
-                list: ['12 занятий в месяц'],
-                selectValue: 'Групповые занятия',
-                bottomPrice: '12 000 ₽ / месяц (12 занятий)'
-            }
-        };
-
-        // Обновление блока цены на главной
-        function updateMainPrice() {
-            const key = document.getElementById('mainServiceSelector').value;
-            const data = serviceData[key];
-            document.getElementById('mainPriceValue').innerHTML = data.priceDisplay;
-            
-            const listContainer = document.getElementById('mainPriceList');
-            listContainer.innerHTML = '';
-            data.list.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                listContainer.appendChild(li);
-            });
-        }
-
-        // Обновление цены ВНУТРИ МОДАЛЬНОГО ОКНА при выборе услуги
-        function updateModalPrice() {
-            const selectedText = document.getElementById('userProgram').value;
-            const topPrice = document.getElementById('modalTopPrice');
-            const bottomPrice = document.getElementById('modalBottomPrice');
-
-            let foundData = null;
-            for (let key in serviceData) {
-                if (serviceData[key].selectValue === selectedText) {
-                    foundData = serviceData[key];
-                    break;
-                }
-            }
-
-            if (foundData) {
-                topPrice.innerHTML = foundData.priceDisplay;
-                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>${foundData.bottomPrice}</strong>`;
-            } else {
-                topPrice.innerHTML = '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>';
-                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>`;
-            }
-        }
-
-        // Открытие модалки с передачей выбора с главной
-        function openModalWithMainSelection() {
-            const mainKey = document.getElementById('mainServiceSelector').value;
-            const data = serviceData[mainKey];
-            
+        // Функция открытия модалки с конкретной услугой из карточки
+        function openModal(programName, programPrice) {
+            const modalTop = document.getElementById('modalTopPrice');
+            const modalBottom = document.getElementById('modalBottomPrice');
             const modalSelect = document.getElementById('userProgram');
-            const topPrice = document.getElementById('modalTopPrice');
-            const bottomPrice = document.getElementById('modalBottomPrice');
 
-            topPrice.innerHTML = data.priceDisplay;
-            bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>${data.bottomPrice}</strong>`;
-
-            for(let i = 0; i < modalSelect.options.length; i++) {
-                if(modalSelect.options[i].value === data.selectValue) {
-                    modalSelect.selectedIndex = i;
-                    break;
+            // Если название пустое (нажали из контактов), показываем дефолт
+            if (!programName) {
+                modalTop.innerHTML = '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>';
+                modalBottom.innerHTML = `Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>`;
+                modalSelect.selectedIndex = 0;
+            } else {
+                // Ставим цену в модалку
+                modalTop.innerHTML = programPrice;
+                modalBottom.innerHTML = `Стоимость выбранной программы: <strong>${programPrice}</strong>`;
+                
+                // Автоматически выбираем программу в выпадающем списке
+                for(let i = 0; i < modalSelect.options.length; i++) {
+                    if(modalSelect.options[i].value === programName) {
+                        modalSelect.selectedIndex = i;
+                        break;
+                    }
                 }
             }
 
@@ -475,7 +450,6 @@
             document.getElementById('formStatus').textContent = '';
         }
 
-        // Закрытие модалки
         function closeModal() {
             document.getElementById('orderModal').classList.remove('active');
             document.body.style.overflow = '';
@@ -487,7 +461,7 @@
             }
         });
 
-        // ===== ОТПРАВКА ФОРМЫ НА ПОЧТУ (EMAILJS) =====
+        // ===== ОТПРАВКА ФОРМЫ НА ПОЧТУ =====
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
