@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программы тренировок | Тренер Беспокоит</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0b1a1a 0%, #0e2626 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container { width: 100%; max-width: 1200px; padding: 0 20px; margin: 0 auto; }
+        a { text-decoration: none; color: inherit; }
+        
+        .btn-primary {
+            display: inline-block; background: #ffffff; color: #0b1a1a;
+            font-weight: 800; font-size: 16px; text-transform: uppercase;
+            padding: 14px 30px; border-radius: 50px; border: none;
+            cursor: pointer; transition: all 0.3s ease; text-align: center;
+        }
+        .btn-primary:hover { background: #e6e6e6; transform: translateY(-2px); }
+        
+        .btn-outline {
+            display: inline-block; background: transparent; color: #ffffff;
+            font-weight: 700; font-size: 15px; border: 2px solid #8bb9b9;
+            padding: 12px 30px; border-radius: 50px; transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-outline:hover { background: #8bb9b9; color: #0b1a1a; }
+
+        .page-header { width: 100%; padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .back-link { color: #8bb9b9; font-weight: 600; transition: 0.2s; font-size: 18px; }
+        .back-link:hover { color: #ffffff; }
+
+        .programs-section { padding: 60px 0; width: 100%; }
+        .section-title { font-size: 36px; font-weight: 800; text-transform: uppercase; margin-bottom: 50px; text-align: center; letter-spacing: 1px; }
+        
+        /* ===== КАРТОЧКИ НАПРАВЛЕНИЙ ===== */
+        .program-full-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(139, 185, 185, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .program-full-card:hover { background: rgba(255, 255, 255, 0.06); }
+        .program-full-card h3 { font-size: 28px; color: #8bb9b9; margin-bottom: 15px; }
+        .program-full-card p { color: #cce3e3; font-size: 17px; line-height: 1.6; max-width: 800px; }
+
+        /* ===== БЛОК TELEGRAM ===== */
+        .telegram-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 185, 185, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0 50px;
+            text-align: center;
+        }
+        .telegram-block h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .telegram-block p {
+            color: #cce3e3;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            line-height: 1.6;
+        }
+
+        /* ===== БЛОК УСЛУГ С ЦЕНАМИ ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 185, 185, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
+        .service-card h3 { font-size: 22px; color: #ffffff; margin-bottom: 5px; }
+        .service-card .price-tag { font-size: 28px; font-weight: 900; color: #8bb9b9; margin-bottom: 15px; display: block; }
+        .service-card ul { list-style: none; padding: 0; margin: 15px 0 25px; flex: 1; }
+        .service-card ul li { padding: 6px 0; color: #cce3e3; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+        .service-card ul li::before { content: "—"; color: #8bb9b9; }
+        .service-card p { color: #cce3e3; font-size: 16px; }
+
+        footer { width: 100%; padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px; text-align: center; font-size: 14px; color: #7a9999; }
+        footer a { color: #8bb9b9; font-weight: 600; transition: 0.3s; }
+        footer a:hover { color: #ffffff; }
+
+        @media (max-width: 600px) {
+            .section-title { font-size: 28px; }
+            .program-full-card, .service-card { padding: 25px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="page-header">
+            <a href="index.html" class="back-link">← На главную</a>
+            <div class="logo" style="font-weight: 900; font-size: 20px; color: #ffffff;">ТРЕНЕР БЕСПОКОИТ</div>
+        </header>
+
+        <section class="programs-section">
+            
+            <h2 class="section-title">
+                <span>Направ</span><span>ления</span>
+            </h2>
+
+            <!-- Направление 1 -->
+            <div class="program-full-card">
+                <h3>ОФП для детей</h3>
+                <p>Общее укрепление организма с целью профилактики травм и болезней опорно-двигательного аппарата и сердечно-сосудистой системы для здорового и гармоничного развития ребенка.</p>
+                <a href="index.html#contacts" class="btn-primary" style="margin-top: 20px;">Записаться</a>
+            </div>
+
+            <!-- Направление 2 -->
+            <div class="program-full-card">
+                <h3>Силовая и кондиционная подготовка спортсменов</h3>
+                <p>Развитие атлетизма исходя из индивидуальных особенностей спортсмена с целью повышения спортивных результатов.</p>
+                <a href="index.html#contacts" class="btn-primary" style="margin-top: 20px;">Записаться</a>
+            </div>
+
+            <!-- Направление 3 -->
+            <div class="program-full-card">
+                <h3>Фитнес</h3>
+                <p>Занятия общей направленности, направленные на оздоровление и укрепление организма для комфортной жизни или после травм.</p>
+                <a href="index.html#contacts" class="btn-primary" style="margin-top: 20px;">Записаться</a>
+            </div>
+
+            <!-- ===== БЛОК ПРИГЛАШЕНИЯ В TELEGRAM ===== -->
+            <div class="telegram-block">
+                <h3>Погрузитесь в атмосферу тренировок</h3>
+                <p>
+                    Чтобы лучше познакомиться с моим подходом, методикой и ежедневным процессом, 
+                    приглашаю вас в мой Telegram-канал. Здесь вы найдете полезные советы, 
+                    отчеты о тренировках и сможете убедиться в профессионализме до начала сотрудничества.
+                </p>
+                <a href="https://t.me/tbzimin" target="_blank" class="btn-outline">Перейти в Telegram-канал</a>
+            </div>
+
+            <!-- ===== БЛОК ФОРМАТОВ РАБОТЫ С ЦЕНАМИ ===== -->
+            <h2 class="section-title" style="margin-top: 20px;">
+                <span>Форма</span><span>ты</span>
+                <br>
+                <span>рабо</span><span>ты</span>
+            </h2>
+            
+            <div class="services-grid">
+                
+                <!-- Услуга 1 -->
+                <div class="service-card">
+                    <h3>Индивидуальная тренировка</h3>
+                    <span class="price-tag">3 000 ₽ / занятие</span>
+                    <p>Персональная работа с тренером один на один. Полная концентрация на ваших целях и технике.</p>
+                    <a href="index.html#contacts" class="btn-primary" style="margin-top: auto;">Записаться</a>
+                </div>
+
+                <!-- Услуга 2 -->
+                <div class="service-card">
+                    <h3>Онлайн-Консультация</h3>
+                    <span class="price-tag">5 000 ₽</span>
+                    <ul>
+                        <li>Анализ образа жизни</li>
+                        <li>Рекомендации по питанию</li>
+                        <li>Рекомендации по тренировочному процессу</li>
+                    </ul>
+                    <a href="index.html#contacts" class="btn-primary">Записаться</a>
+                </div>
+
+                <!-- Услуга 3 -->
+                <div class="service-card">
+                    <h3>Онлайн-Сопровождение</h3>
+                    <span class="price-tag">10 000 ₽ / месяц</span>
+                    <ul>
+                        <li>Тренировочный план</li>
+                        <li>Коррекция питания</li>
+                        <li>Анализ режима дня</li>
+                    </ul>
+                    <a href="index.html#contacts" class="btn-primary">Записаться</a>
+                </div>
+
+                <!-- Услуга 4 -->
+                <div class="service-card">
+                    <h3>Групповые занятия</h3>
+                    <span class="price-tag">12 000 ₽ / месяц (12 занятий)</span>
+                    <ul>
+                        <li>12 занятий в месяц</li>
+                    </ul>
+                    <a href="index.html#contacts" class="btn-primary" style="margin-top: auto;">Записаться</a>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+    <footer class="container">
+        <p>Сайт сделан — <a href="https://algoritm-delo.ru/" target="_blank">Алгоритм.Дело</a></p>
+    </footer>
+
+</body>
+</html>

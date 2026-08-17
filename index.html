@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренер Беспокоит | Персональные тренировки</title>
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0b1a1a 0%, #0e2626 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container { width: 100%; max-width: 1200px; padding: 0 20px; margin: 0 auto; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===== КНОПКИ ===== */
+        .btn-primary {
+            display: inline-block;
+            background: #ffffff;
+            color: #0b1a1a;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+            background: #e6e6e6;
+        }
+        
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            border: 2px solid #8bb9b9;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-outline:hover {
+            background: #8bb9b9;
+            color: #0b1a1a;
+        }
+
+        /* ===== ШАПКА (HERO) ===== */
+        .hero { padding: 80px 0 60px; width: 100%; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-content { display: flex; flex-direction: column; gap: 20px; }
+        .hero-name { font-size: 56px; font-weight: 900; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; }
+        .hero-status { font-size: 22px; font-weight: 600; color: #8bb9b9; letter-spacing: 2px; }
+        .hero-offer { font-size: 18px; color: #cce3e3; max-width: 450px; margin: 10px 0 10px; line-height: 1.5; }
+        .hero-image { display: flex; justify-content: center; align-items: center; }
+        .hero-image img {
+            width: 100%; max-width: 450px; height: auto; border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+        }
+
+        /* ===== ЗАГОЛОВКИ СЕКЦИЙ ===== */
+        .section { padding: 60px 0; width: 100%; }
+        .section-title { font-size: 36px; font-weight: 800; text-transform: uppercase; margin-bottom: 40px; text-align: center; letter-spacing: 1px; }
+        .section-title span { color: #8bb9b9; }
+
+        /* ===== НАПРАВЛЕНИЯ ===== */
+        .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .program-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(139, 185, 185, 0.15);
+            padding: 30px; border-radius: 16px; transition: 0.3s; text-align: center;
+        }
+        .program-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
+        .program-card h3 { font-size: 20px; margin-bottom: 10px; color: #8bb9b9; }
+        .program-card p { font-size: 16px; color: #d1e3e3; margin-bottom: 20px; }
+        .program-card .btn-outline { font-size: 14px; padding: 8px 20px; }
+
+        /* ===== ОПЫТ ===== */
+        .experience-wrapper { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 40px; border: 1px solid rgba(139, 185, 185, 0.1); }
+        .exp-top { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px; }
+        .exp-item { text-align: center; }
+        .exp-item h4 { color: #8bb9b9; font-size: 18px; margin-bottom: 8px; }
+        .exp-item p { color: #cce3e3; font-size: 16px; }
+        .exp-bottom { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px; }
+        .exp-numbers { text-align: center; }
+        .exp-numbers span { display: block; font-size: 36px; font-weight: 900; color: #ffffff; }
+        .exp-numbers small { color: #8bb9b9; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        /* ===== ЦЕНА (ДИНАМИЧЕСКИЙ БЛОК) ===== */
+        .price-card { max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .price-value { font-size: 56px; font-weight: 900; color: #ffffff; transition: 0.3s; line-height: 1.2; }
+        .price-list { text-align: left; margin: 25px 0 30px; list-style: none; padding: 0; min-height: 90px; transition: 0.3s; }
+        .price-list li { padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 15px; font-size: 16px; color: #e0f0f0; }
+        .price-list li::before { content: "✓"; color: #8bb9b9; font-weight: 900; font-size: 20px; }
+        
+        .service-selector {
+            width: 100%; padding: 14px 16px; border-radius: 12px;
+            border: 1px solid rgba(139, 185, 185, 0.3); background: rgba(255, 255, 255, 0.05);
+            color: #ffffff; font-size: 16px; font-family: inherit; outline: none; transition: 0.2s;
+            margin-bottom: 25px; text-align: center; cursor: pointer;
+        }
+        .service-selector:focus { border-color: #8bb9b9; background: rgba(255, 255, 255, 0.1); }
+        .service-selector option { background: #0b1a1a; color: #fff; }
+
+        /* ===== КОНТАКТЫ ===== */
+        .contacts-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(139, 185, 185, 0.2); }
+        .contacts-info { display: flex; flex-direction: column; gap: 15px; }
+        .contacts-info a { font-size: 18px; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+        .contacts-info a:hover { color: #8bb9b9; }
+        .contacts-socials { display: flex; gap: 15px; }
+        .contacts-socials span { padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; font-size: 14px; }
+
+        /* ===== МОДАЛЬНОЕ ОКНО (ФОРМА) ===== */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px); display: none; align-items: center;
+            justify-content: center; z-index: 1000; padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: #122424; border: 1px solid rgba(139, 185, 185, 0.3);
+            max-width: 480px; width: 100%; border-radius: 24px;
+            padding: 40px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            position: relative; animation: fadeUp 0.3s ease;
+        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-close {
+            position: absolute; top: 15px; right: 20px; background: none;
+            border: none; color: #8bb9b9; font-size: 28px; cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover { color: #ffffff; transform: rotate(90deg); }
+        
+        .modal-top-price { text-align: center; font-size: 42px; font-weight: 900; color: #ffffff; margin-bottom: 5px; transition: 0.2s; line-height: 1.2; }
+        
+        .form-group { margin-bottom: 16px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 14px 16px; border-radius: 12px;
+            border: 1px solid rgba(139, 185, 185, 0.3); background: rgba(255, 255, 255, 0.05);
+            color: #ffffff; font-size: 16px; font-family: inherit; outline: none; transition: 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus { border-color: #8bb9b9; background: rgba(255, 255, 255, 0.1); }
+        .form-group input::placeholder { color: #7a9999; }
+        .form-group select option { background: #0b1a1a; color: #fff; }
+        
+        .modal-bottom-price { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); color: #cce3e3; font-size: 15px; transition: 0.2s; }
+        .modal-bottom-price strong { font-size: 20px; color: #ffffff; }
+        
+        #formStatus { text-align: center; margin-top: 15px; font-weight: 600; min-height: 24px; color: #8bb9b9; }
+
+        /* ===== ПОДВАЛ ===== */
+        footer { width: 100%; padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px; text-align: center; font-size: 14px; color: #7a9999; }
+        footer a { color: #8bb9b9; font-weight: 600; transition: 0.3s; }
+        footer a:hover { color: #ffffff; }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .hero-offer { margin: 0 auto; }
+            .hero-name { font-size: 40px; }
+            .program-grid, .exp-top { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero-name { font-size: 32px; }
+            .price-value { font-size: 40px; }
+            .contacts-wrapper { flex-direction: column; text-align: center; }
+            .contacts-info a { justify-content: center; }
+            .btn-primary, .btn-outline { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ШАПКА / HERO ===== -->
+    <section class="hero container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-status">Тренер по физической подготовке</div>
+                <h1 class="hero-name">Данил Зимин</h1>
+                <p class="hero-offer">
+                    Фраза Офер.
+                </p>
+                <div>
+                    <a href="#contacts" class="btn-primary">Записаться</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Resources/trainer.jpg" alt="Фото тренера">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== НАПРАВЛЕНИЯ ===== -->
+    <section class="section container" id="directions">
+        <h2 class="section-title">
+            <span>Направ</span><span>ления</span>
+        </h2>
+        <div class="program-grid">
+            <div class="program-card">
+                <h3>ОФП для детей</h3>
+                <p>Развитие координации, силы и выносливости с ранних лет. Закладка спортивной базы.</p>
+                <a href="programs.html" class="btn-outline">Подробнее</a>
+            </div>
+            <div class="program-card">
+                <h3>Силовая подготовка</h3>
+                <p>Программы для спортсменов, направленные на рост силовых показателей и взрывной силы.</p>
+                <a href="programs.html" class="btn-outline">Подробнее</a>
+            </div>
+            <div class="program-card">
+                <h3>Фитнес / Кондиция</h3>
+                <p>Общая кондиционная подготовка, коррекция фигуры, работа над выносливостью и тонусом мышц.</p>
+                <a href="programs.html" class="btn-outline">Подробнее</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="programs.html" class="btn-primary">Все программы и цены</a>
+        </div>
+    </section>
+
+    <!-- ===== ОПЫТ ===== -->
+    <section class="section container" id="experience">
+        <h2 class="section-title">
+            <span>О</span><span>пыт</span>
+        </h2>
+        <div class="experience-wrapper">
+            <div class="exp-top">
+                <div class="exp-item">
+                    <h4>«СК Чемпион»</h4>
+                    <p>Тренерский состав</p>
+                </div>
+                <div class="exp-item">
+                    <h4>МБОУ СОШ 46</h4>
+                    <p>Преподаватель физической культуры</p>
+                </div>
+                <div class="exp-item">
+                    <h4>ПБК Динамо-Владивосток</h4>
+                    <p>Тренер по физической подготовке</p>
+                </div>
+                <div class="exp-item">
+                    <h4>Академия Динамо им. Льва Яшина</h4>
+                    <p>Специалист по ОФП / Кондиции</p>
+                </div>
+                <div class="exp-item">
+                    <h4>«СК Титул»</h4>
+                    <p>Персональный тренер</p>
+                </div>
+            </div>
+            <div class="exp-bottom">
+                <div class="exp-numbers">
+                    <span>С 2018</span>
+                    <small>Года в спорте</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ДИНАМИЧЕСКАЯ ЦЕНА ===== -->
+    <section class="section container" id="price">
+        <h2 class="section-title">
+            <span>Стои</span><span>мость</span><br>
+            <span>уча</span><span>стия</span>
+        </h2>
+        <div class="price-card">
+            
+            <select class="service-selector" id="mainServiceSelector" onchange="updateMainPrice()">
+                <option value="individual">Индивидуальная тренировка (3 000₽)</option>
+                <option value="online_consult">Онлайн-Консультация (5 000₽)</option>
+                <option value="online_support">Онлайн-Сопровождение (10 000₽)</option>
+                <option value="group">Групповые занятия (12 000₽)</option>
+            </select>
+
+            <div class="price-value" id="mainPriceValue">
+                3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>
+            </div>
+            
+            <ul class="price-list" id="mainPriceList">
+                <li>Персональная работа с тренером один на один</li>
+                <li>Полная концентрация на ваших целях и технике</li>
+            </ul>
+
+            <a href="#" onclick="openModalWithMainSelection(); return false;" class="btn-primary">Начать тренировки</a>
+        </div>
+    </section>
+
+    <!-- ===== КОНТАКТЫ ===== -->
+    <section class="section container" id="contacts">
+        <h2 class="section-title">
+            <span>Кон</span><span>такты</span>
+        </h2>
+        <div class="contacts-wrapper">
+            <div class="contacts-info">
+                <a href="tel:+79643351958">📞 +7 964 335 19 58</a>
+                <a href="mailto:Zimin1221danil@mail.ru">✉️ Zimin1221danil@mail.ru</a>
+                <a href="#">📍 Улица Карбышева, 12в ст2 / Титул</a>
+            </div>
+            <div class="contacts-socials">
+                <span>Telegram</span>
+                <span>MAX</span>
+                <span>VK</span>
+            </div>
+            <a href="#" onclick="openModalWithMainSelection(); return false;" class="btn-primary">Записаться</a>
+        </div>
+    </section>
+
+    <!-- ===== ПОДВАЛ ===== -->
+    <footer class="container">
+        <p>
+            Сайт сделан — 
+            <a href="https://algoritm-delo.ru/" target="_blank">Алгоритм.Дело</a>
+        </p>
+    </footer>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО (ФОРМА ЗАЯВКИ) ===== -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            
+            <div class="modal-top-price" id="modalTopPrice">
+                3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>
+            </div>
+            <p style="text-align: center; color: #8bb9b9; margin-bottom: 20px; font-size: 14px; letter-spacing: 1px;">Оставьте заявку, и я свяжусь с вами</p>
+
+            <form id="orderForm">
+                <div class="form-group">
+                    <input type="tel" id="userPhone" placeholder="Ваш номер телефона *" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Ваша электронная почта">
+                </div>
+                <div class="form-group">
+                    <select id="userProgram" onchange="updateModalPrice()" required>
+                        <option value="">Выберите программу *</option>
+                        <option value="Индивидуальная тренировка">Индивидуальная тренировка</option>
+                        <option value="Онлайн-Консультация">Онлайн-Консультация</option>
+                        <option value="Онлайн-Сопровождение">Онлайн-Сопровождение</option>
+                        <option value="Групповые занятия">Групповые занятия</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Отправить заявку</button>
+            </form>
+            
+            <div class="modal-bottom-price" id="modalBottomPrice">
+                Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>
+            </div>
+            <div id="formStatus"></div>
+        </div>
+    </div>
+
+    <!-- ===== СКРИПТ ===== -->
+    <script>
+        // Инициализация EmailJS с твоим Public Key
+        (function() {
+            emailjs.init({
+                publicKey: '2UMeMhy4aJizV6SAW'
+            });
+        })();
+
+        // Данные об услугах с ценами для интерфейса
+        const serviceData = {
+            'individual': {
+                priceDisplay: '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>',
+                list: ['Персональная работа с тренером один на один', 'Полная концентрация на ваших целях и технике'],
+                selectValue: 'Индивидуальная тренировка',
+                bottomPrice: '3 000 ₽ / занятие'
+            },
+            'online_consult': {
+                priceDisplay: '5 000 ₽',
+                list: ['Анализ образа жизни', 'Рекомендации по питанию', 'Рекомендации по тренировочному процессу'],
+                selectValue: 'Онлайн-Консультация',
+                bottomPrice: '5 000 ₽'
+            },
+            'online_support': {
+                priceDisplay: '10 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц</span>',
+                list: ['Тренировочный план', 'Коррекция питания', 'Анализ режима дня'],
+                selectValue: 'Онлайн-Сопровождение',
+                bottomPrice: '10 000 ₽ / месяц'
+            },
+            'group': {
+                priceDisplay: '12 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц (12 занятий)</span>',
+                list: ['12 занятий в месяц'],
+                selectValue: 'Групповые занятия',
+                bottomPrice: '12 000 ₽ / месяц (12 занятий)'
+            }
+        };
+
+        // Обновление блока цены на главной
+        function updateMainPrice() {
+            const key = document.getElementById('mainServiceSelector').value;
+            const data = serviceData[key];
+            document.getElementById('mainPriceValue').innerHTML = data.priceDisplay;
+            
+            const listContainer = document.getElementById('mainPriceList');
+            listContainer.innerHTML = '';
+            data.list.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                listContainer.appendChild(li);
+            });
+        }
+
+        // Обновление цены ВНУТРИ МОДАЛЬНОГО ОКНА при выборе услуги
+        function updateModalPrice() {
+            const selectedText = document.getElementById('userProgram').value;
+            const topPrice = document.getElementById('modalTopPrice');
+            const bottomPrice = document.getElementById('modalBottomPrice');
+
+            let foundData = null;
+            for (let key in serviceData) {
+                if (serviceData[key].selectValue === selectedText) {
+                    foundData = serviceData[key];
+                    break;
+                }
+            }
+
+            if (foundData) {
+                topPrice.innerHTML = foundData.priceDisplay;
+                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>${foundData.bottomPrice}</strong>`;
+            } else {
+                topPrice.innerHTML = '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>';
+                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>`;
+            }
+        }
+
+        // Открытие модалки с передачей выбора с главной
+        function openModalWithMainSelection() {
+            const mainKey = document.getElementById('mainServiceSelector').value;
+            const data = serviceData[mainKey];
+            
+            const modalSelect = document.getElementById('userProgram');
+            const topPrice = document.getElementById('modalTopPrice');
+            const bottomPrice = document.getElementById('modalBottomPrice');
+
+            topPrice.innerHTML = data.priceDisplay;
+            bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>${data.bottomPrice}</strong>`;
+
+            for(let i = 0; i < modalSelect.options.length; i++) {
+                if(modalSelect.options[i].value === data.selectValue) {
+                    modalSelect.selectedIndex = i;
+                    break;
+                }
+            }
+
+            document.getElementById('orderModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('formStatus').textContent = '';
+        }
+
+        // Закрытие модалки
+        function closeModal() {
+            document.getElementById('orderModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('orderModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ===== ОТПРАВКА ФОРМЫ НА ПОЧТУ (EMAILJS) =====
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const phone = document.getElementById('userPhone').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const program = document.getElementById('userProgram').value;
+            const statusText = document.getElementById('formStatus');
+
+            if (!phone || !program) {
+                statusText.style.color = '#ff6b6b';
+                statusText.textContent = 'Пожалуйста, заполните номер телефона и выберите программу.';
+                return;
+            }
+
+            statusText.style.color = '#8bb9b9';
+            statusText.textContent = 'Отправка...';
+
+            const templateParams = {
+                from_name: phone,
+                reply_to: email || 'Не указана',
+                message: `Клиент выбрал программу: ${program}`
+            };
+
+            emailjs.send('service_i26cluq', 'template_mmu3kj7', templateParams)
+                .then(function(response) {
+                    statusText.style.color = '#ffffff';
+                    statusText.textContent = '✅ Заявка отправлена! Я свяжусь с вами в ближайшее время.';
+                    document.getElementById('orderForm').reset();
+                    
+                    setTimeout(() => {
+                        closeModal();
+                        statusText.textContent = '';
+                    }, 3000);
+                })
+                .catch(function(error) {
+                    console.error('Ошибка отправки:', error);
+                    statusText.style.color = '#ff6b6b';
+                    statusText.textContent = '❌ Ошибка отправки. Попробуйте позже или напишите мне в Telegram.';
+                });
+        });
+    </script>
+
+</body>
+</html>
