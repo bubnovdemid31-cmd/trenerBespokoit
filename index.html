@@ -171,11 +171,15 @@
             color: #ffffff;
             margin-bottom: 10px;
         }
-        .facts-block p { color: #c0c0c0; }
+        .facts-block p { 
+            color: #c0c0c0; 
+            padding-left: 0; 
+        }
         .facts-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
+            padding-left: 0;
         }
         .facts-grid .fact {
             font-size: 14px;
@@ -195,7 +199,13 @@
             align-items: start;
         }
         .about-text { display: flex; flex-direction: column; gap: 14px; }
-        .about-text p { font-size: 15px; color: #1a1a2e; line-height: 1.7; padding-left: 0; }
+        .about-text p { 
+            font-size: 15px; 
+            color: #1a1a2e; 
+            line-height: 1.7; 
+            padding-left: 0; 
+            padding-right: 0; 
+        }
         .about-text .highlight {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -238,6 +248,7 @@
             color: #c0c0c0;
             margin-bottom: 14px;
             padding-left: 0;
+            padding-right: 0;
         }
         .kids-grid {
             display: grid;
@@ -264,6 +275,7 @@
             color: #c0c0c0;
             margin-top: 8px;
             padding-left: 0;
+            padding-right: 0;
         }
 
         .services-intro {
@@ -272,6 +284,7 @@
             margin-bottom: 24px;
             max-width: 800px;
             padding-left: 0;
+            padding-right: 0;
         }
         .services-grid {
             display: grid;
@@ -334,19 +347,9 @@
             color: #c0c0c0;
             margin-bottom: 14px;
             padding-left: 0;
+            padding-right: 0;
         }
 
-        .promo-block {
-            background: #1B2A4A;
-            border-radius: 8px;
-            padding: 28px 35px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            border: 1px solid rgba(0, 174, 239, 0.15);
-        }
         .promo-block {
             background: #1B2A4A;
             border-radius: 8px;
@@ -366,7 +369,7 @@
         .promo-block .text .sub {
             font-size: 14px;
             font-weight: 400;
-            color: #FFFFFF;
+            color: #F04E8B;
         }
 
         .approach-block {
@@ -381,6 +384,7 @@
             line-height: 1.7;
             margin-bottom: 8px;
             padding-left: 0;
+            padding-right: 0;
         }
         .approach-block p strong { color: #ffffff; }
         .approach-block .tags {
@@ -551,6 +555,38 @@
             .kids-block { padding: 20px; }
             .approach-block { padding: 20px; }
             .service-card { padding: 18px 16px; }
+            .services-intro {
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }
+            .about-text p {
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }
+        }
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ ОТСТУПЫ ===== */
+        .services-intro,
+        .facts-block p,
+        .kids-block .sub,
+        .kids-block .kids-desc,
+        .service-card p,
+        .approach-block p,
+        .about-text p {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        
+        @media (max-width: 600px) {
+            .services-intro,
+            .facts-block p,
+            .kids-block .sub,
+            .kids-block .kids-desc,
+            .service-card p,
+            .approach-block p,
+            .about-text p {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
         }
     </style>
 </head>
@@ -585,7 +621,7 @@
     <section class="section container">
         <div class="facts-block">
             <h3>Факты о бадминтоне</h3>
-            <p style="font-size: 15px; margin-bottom: 12px;">Бадминтон — это не просто игра, где вы играли во дворе. Это спорт, который развивает скорость, координацию, выносливость, реакцию, мышление и уверенность в себе.</p>
+            <p style="font-size: 15px; margin-bottom: 12px; padding-left: 0;">Бадминтон — это не просто игра, где вы играли во дворе. Это спорт, который развивает скорость, координацию, выносливость, реакцию, мышление и уверенность в себе.</p>
             <div class="facts-grid">
                 <div class="fact"><strong>Входит</strong> в программу подготовки космонавтов</div>
                 <div class="fact"><strong>Улучшает</strong> зрение и работу мозга</div>
@@ -709,7 +745,7 @@
     <section class="section container">
         <div class="promo-block">
             <div class="text">
-                <span>Приводи друга</span> — тренируйся выгоднее!<br>
+                <span style="color: #F04E8B; font-weight: 800;">Приводи друга</span> — <span style="color: #F04E8B; font-weight: 800;">тренируйся выгоднее!</span><br>
                 <span class="sub">Приведите друга на тренировку и получите 50% скидку на свою следующую тренировку.<br>Бадминтон — это спорт, которым гораздо интереснее заниматься вместе!</span>
             </div>
             <a href="#contacts" class="btn-primary">Записаться</a>
