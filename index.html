@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BADMINTON DORS CLUB | Тренер София Дорошенко</title>
     
-    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +27,6 @@
         .container { width: 100%; max-width: 1200px; padding: 0 20px; margin: 0 auto; }
         a { text-decoration: none; color: inherit; }
 
-        /* ===== КНОПКИ ===== */
         .btn-primary {
             display: inline-block;
             background: #00AEEF;
@@ -51,49 +49,7 @@
             box-shadow: 0 8px 30px rgba(0, 174, 239, 0.45);
             background: #0099d6;
         }
-        
-        .btn-secondary {
-            display: inline-block;
-            background: #F04E8B;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 14px 36px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(240, 78, 139, 0.3);
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(240, 78, 139, 0.45);
-            background: #d93a7a;
-        }
-        
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: #00AEEF;
-            font-weight: 600;
-            font-size: 14px;
-            border: 2px solid #00AEEF;
-            padding: 10px 26px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-outline:hover {
-            background: #00AEEF;
-            color: #ffffff;
-        }
 
-        /* ===== ШАПКА ===== */
         .hero { 
             padding: 30px 0 50px; 
             width: 100%; 
@@ -177,7 +133,6 @@
             object-fit: cover;
         }
 
-        /* ===== ЗАГОЛОВКИ ===== */
         .section { padding: 55px 0; width: 100%; }
         .section-header {
             display: flex;
@@ -203,7 +158,6 @@
         }
         .section-title span { color: #00AEEF; }
 
-        /* ===== БЛОК "ФАКТЫ О БАДМИНТОНЕ" ===== */
         .facts-block {
             background: #3C3F45;
             border-radius: 8px;
@@ -233,7 +187,6 @@
         }
         .facts-grid .fact strong { color: #00AEEF; }
 
-        /* ===== О ТРЕНЕРЕ ===== */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -241,7 +194,7 @@
             align-items: start;
         }
         .about-text { display: flex; flex-direction: column; gap: 14px; }
-        .about-text p { font-size: 15px; color: #1a1a2e; line-height: 1.7; }
+        .about-text p { font-size: 15px; color: #1a1a2e; line-height: 1.7; padding-left: 0; }
         .about-text .highlight {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -266,7 +219,6 @@
             color: #00AEEF;
         }
 
-        /* ===== ДЕТСКИЕ ТРЕНИРОВКИ ===== */
         .kids-block {
             background: #3C3F45;
             border-radius: 8px;
@@ -284,11 +236,13 @@
             font-size: 14px;
             color: #c0c0c0;
             margin-bottom: 14px;
+            padding-left: 0;
         }
         .kids-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px 25px;
+            padding-left: 0;
         }
         .kids-grid li {
             list-style: none;
@@ -308,9 +262,16 @@
             font-size: 14px;
             color: #c0c0c0;
             margin-top: 8px;
+            padding-left: 0;
         }
 
-        /* ===== УСЛУГИ (ВЗРОСЛЫЕ) ===== */
+        .services-intro {
+            font-size: 15px;
+            color: #1a1a2e;
+            margin-bottom: 24px;
+            max-width: 800px;
+            padding-left: 0;
+        }
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -333,25 +294,21 @@
             color: #ffffff;
             margin-bottom: 4px;
         }
-        .service-card .price {
+        .service-card .price-all {
             font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: 900;
+            font-size: 20px;
+            font-weight: 700;
             color: #00AEEF;
             display: block;
-            margin: 6px 0 10px;
-        }
-        .service-card .price small {
-            font-size: 14px;
-            font-weight: 400;
-            color: #c0c0c0;
+            margin: 4px 0;
         }
         .service-card .price-sub {
-            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
             font-weight: 600;
-            color: #ffffff;
+            color: #00AEEF;
             display: block;
-            margin-bottom: 6px;
+            margin: 4px 0;
         }
         .service-card ul {
             list-style: none;
@@ -375,17 +332,9 @@
             font-size: 14px;
             color: #c0c0c0;
             margin-bottom: 14px;
-        }
-        .service-card .btn-primary {
-            padding: 10px 28px;
-            font-size: 13px;
-        }
-        .service-card .btn-secondary {
-            padding: 10px 28px;
-            font-size: 13px;
+            padding-left: 0;
         }
 
-        /* ===== АКЦИЯ ===== */
         .promo-block {
             background: #1B2A4A;
             border-radius: 8px;
@@ -412,7 +361,6 @@
             color: #c0c0c0;
         }
 
-        /* ===== ПОДХОД ===== */
         .approach-block {
             background: #3C3F45;
             border-radius: 8px;
@@ -430,6 +378,7 @@
             color: #c0c0c0;
             line-height: 1.7;
             margin-bottom: 8px;
+            padding-left: 0;
         }
         .approach-block p strong { color: #ffffff; }
         .approach-block .tags {
@@ -449,7 +398,6 @@
         }
         .approach-block .tags span strong { color: #00AEEF; }
 
-        /* ===== КОНТАКТЫ ===== */
         .contacts-wrapper {
             display: flex;
             justify-content: space-between;
@@ -493,7 +441,6 @@
             color: #ffffff;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО ===== */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(27, 42, 74, 0.7);
             backdrop-filter: blur(4px); display: none; align-items: center;
@@ -560,7 +507,6 @@
         .modal-bottom-price strong { color: #00AEEF; }
         #formStatus { text-align: center; margin-top: 12px; font-weight: 600; min-height: 22px; color: #00AEEF; }
 
-        /* ===== ПОДВАЛ ===== */
         footer { 
             width: 100%; 
             padding: 22px 0; 
@@ -573,7 +519,6 @@
         footer a { color: #00AEEF; font-weight: 600; transition: 0.2s; }
         footer a:hover { color: #1B2A4A; }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
             .hero-main { grid-template-columns: 1fr; text-align: center; gap: 25px; }
             .hero-name { font-size: 34px; }
@@ -598,7 +543,7 @@
             .contacts-wrapper { flex-direction: column; text-align: center; }
             .contacts-left a { justify-content: center; }
             .contacts-right { justify-content: center; }
-            .btn-primary, .btn-secondary, .btn-outline { width: 100%; }
+            .btn-primary { width: 100%; }
             .promo-block { flex-direction: column; text-align: center; }
             .facts-block { padding: 20px; }
             .kids-block { padding: 20px; }
@@ -609,7 +554,6 @@
 </head>
 <body>
 
-    <!-- ===== ШАПКА ===== -->
     <section class="hero">
         <div class="container hero-wrapper">
             <div class="hero-top">
@@ -636,7 +580,6 @@
         </div>
     </section>
 
-    <!-- ===== ФАКТЫ О БАДМИНТОНЕ ===== -->
     <section class="section container">
         <div class="facts-block">
             <h3>Факты о бадминтоне</h3>
@@ -650,7 +593,6 @@
         </div>
     </section>
 
-    <!-- ===== О ТРЕНЕРЕ ===== -->
     <section class="section container" id="about">
         <div class="section-header">
             <span class="line"></span>
@@ -659,8 +601,7 @@
         </div>
         <div class="about-grid">
             <div class="about-text">
-                <p><span class="highlight">Дорошенко София Вячеславовна</span> является тренером по бадминтону и спортсменом с большим соревновательным опытом. Является многократным победителем и призёром всероссийских и международных соревнований, призёром первенства Европы.</p>
-                <p>Сегодня помогает детям и взрослым открывать для себя бадминтон, совершенствовать технику, развивать физические качества и получать удовольствие от тренировочного процесса.</p>
+                <p><span class="highlight">Дорошенко София Вячеславовна</span> является тренером по бадминтону и спортсменом с большим соревновательным опытом. Является многократным победителем и призёром всероссийских и международных соревнований, призёром первенства Европы. А так же помогает детям и взрослым открывать для себя бадминтон, совершенствовать технику, развивать физические качества и получать удовольствие от тренировочного процесса.</p>
             </div>
             <div class="about-achievements">
                 <div class="ach"><strong>Многократный</strong> победитель всероссийских соревнований</div>
@@ -671,7 +612,6 @@
         </div>
     </section>
 
-    <!-- ===== ДЕТСКИЕ ТРЕНИРОВКИ ===== -->
     <section class="section container" id="kids">
         <div class="section-header">
             <span class="line"></span>
@@ -681,7 +621,7 @@
         <div class="kids-block">
             <h3>Тренировки для детей <span>6–14 лет</span></h3>
             <p class="sub">Я провожу секционные занятия по бадминтону для детей от 6 до 14 лет на бесплатной основе. Моя главная задача — не только научить ребёнка играть в бадминтон, но и создать прочную основу для его физического и спортивного развития.</p>
-            <p style="font-size: 14px; color: #c0c0c0; margin-bottom: 12px; font-weight: 600;">На занятиях дети:</p>
+            <p style="font-size: 14px; color: #c0c0c0; margin-bottom: 12px; font-weight: 600; padding-left: 0;">На занятиях дети:</p>
             <ul class="kids-grid">
                 <li>осваивают базовую технику бадминтона</li>
                 <li>развивают координацию, скорость и реакцию</li>
@@ -695,21 +635,19 @@
         </div>
     </section>
 
-    <!-- ===== ВЗРОСЛЫЕ ТРЕНИРОВКИ ===== -->
     <section class="section container" id="adults">
         <div class="section-header">
             <span class="line"></span>
             <h2 class="section-title"><span>Взрослые</span> тренировки</h2>
             <span class="line"></span>
         </div>
-        <p style="font-size: 15px; color: #1a1a2e; margin-bottom: 24px; max-width: 800px;">Я провожу коммерческие тренировки для взрослых, которые хотят научиться играть с нуля, улучшить технику, повысить физическую форму, подготовиться к соревнованиям или просто получать больше удовольствия от игры. Бадминтон подходит абсолютно для любого возраста и уровня подготовки.</p>
+        <p class="services-intro">Бадминтон подходит абсолютно для любого возраста и уровня подготовки. Коммерческие тренировки предназначены для взрослых, которые хотят научиться играть с нуля, улучшить технику, повысить физическую форму, подготовиться к соревнованиям или просто получать больше удовольствия от игры.</p>
 
         <div class="services-grid">
-            <!-- Индивидуальные -->
             <div class="service-card">
                 <h4>Индивидуальные тренировки</h4>
-                <span class="price">2 500 ₽ <small>/ час</small></span>
-                <span class="price-sub">Пара — 3 000 ₽ / час</span>
+                <span class="price-all">1 человек — 1 час — 2 500 ₽</span>
+                <span class="price-sub">Пара — 1 час — 3 000 ₽</span>
                 <ul>
                     <li>индивидуальная программа</li>
                     <li>работа один на один с тренером</li>
@@ -717,30 +655,26 @@
                     <li>предоставление инвентаря</li>
                     <li>аренда корта</li>
                 </ul>
-                <p>Индивидуальные занятия подходят тем, кто хочет получить максимум моего внимания и максимально эффективно работать над конкретными элементами своей игры.</p>
-                <a href="#" onclick="openModal('Индивидуальная тренировка'); return false;" class="btn-secondary">Записаться</a>
+                <p>Индивидуальные занятия подходят тем, кто хочет получить максимум внимания тренера и максимально эффективно работать над конкретными элементами своей игры.</p>
+                <a href="#" onclick="openModal('Индивидуальная тренировка'); return false;" class="btn-primary" style="display: inline-block;">Записаться</a>
             </div>
 
-            <!-- Мини-группы -->
             <div class="service-card">
                 <h4>Мини-группы</h4>
-                <span class="price">1 250 ₽ <small>с человека</small></span>
-                <span class="price-sub">4 человека — 1,5 часа</span>
+                <span class="price-all">4 человека — 1,5 часа — 1 250 ₽ с человека</span>
                 <ul>
                     <li>тренировка с тренером</li>
                     <li>работа над техникой</li>
                     <li>предоставление инвентаря</li>
                     <li>аренда корта</li>
                 </ul>
-                <p>Оптимальный вариант для тех, кто хочет сочетать преимущества персональной работы с динамикой небольшой группы.</p>
-                <a href="#" onclick="openModal('Мини-группа'); return false;" class="btn-primary">Записаться</a>
+                <p>Оптимальный вариант для тех, кто хочет сочетать преимущества персональной работы с динамикой небольшой группы. На тренировке отрабатываются техника, игровые элементы и конкретные задачи спортсменов.</p>
+                <a href="#" onclick="openModal('Мини-группа'); return false;" class="btn-primary" style="display: inline-block;">Записаться</a>
             </div>
 
-            <!-- Групповые -->
             <div class="service-card">
                 <h4>Групповые тренировки</h4>
-                <span class="price">1 000 ₽ <small>с человека</small></span>
-                <span class="price-sub">До 12 человек — 1,5 часа</span>
+                <span class="price-all">До 12 человек — 1,5 часа — 1 000 ₽ с человека</span>
                 <ul>
                     <li>техническая подготовка</li>
                     <li>игровые упражнения</li>
@@ -748,39 +682,38 @@
                     <li>игровая практика</li>
                     <li>работа над тактикой</li>
                 </ul>
-                <p>Динамичный формат для тех, кто хочет тренироваться в компании и одновременно получать мои профессиональные рекомендации.</p>
-                <a href="#" onclick="openModal('Групповая тренировка'); return false;" class="btn-primary">Записаться</a>
+                <p>Динамичный формат для тех, кто хочет тренироваться в компании и одновременно получать профессиональные рекомендации тренера. Инвентарь и аренда корта включены в стоимость.</p>
+                <a href="#" onclick="openModal('Групповая тренировка'); return false;" class="btn-primary" style="display: inline-block;">Записаться</a>
             </div>
 
-            <!-- Игровые -->
             <div class="service-card">
                 <h4>Игровые тренировки</h4>
-                <span class="price">2 500 ₽ <small>/ час</small></span>
-                <span class="price-sub">Пара — 3 000 ₽ / час</span>
+                <span class="price-all">1 человек — 1 час — 2 500 ₽</span>
+                <span class="price-sub">Пара — 1 час — 3 000 ₽</span>
+                <span class="price-all">До 12 человек — 2 часа — 1 000 ₽ с человека</span>
+                <span class="price-sub">4 человека — 2 часа — 1 250 ₽ с человека</span>
                 <ul>
                     <li>игровые ситуации</li>
                     <li>анализ тактики</li>
                     <li>работа над ошибками</li>
                     <li>инвентарь и аренда включены</li>
                 </ul>
-                <p>Если вы уже умеете играть и хотите сделать свою игру более эффективной, я помогу перенести полученные навыки непосредственно в матч.</p>
-                <a href="#" onclick="openModal('Игровая тренировка'); return false;" class="btn-secondary">Записаться</a>
+                <p>Если вы уже умеете играть и хотите сделать свою игру более эффективной, игровой формат поможет перенести полученные навыки непосредственно в матч. Я могу выступать как партнёр или соперник, помогая вам увидеть слабые стороны и найти способы улучшить свою игру.</p>
+                <a href="#" onclick="openModal('Игровая тренировка'); return false;" class="btn-primary" style="display: inline-block;">Записаться</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== АКЦИЯ ===== -->
     <section class="section container">
         <div class="promo-block">
             <div class="text">
                 <span>Приводи друга</span> — тренируйся выгоднее!<br>
                 <span class="sub">Приведите друга на тренировку и получите 50% скидку на свою следующую тренировку.<br>Бадминтон — это спорт, которым гораздо интереснее заниматься вместе!</span>
             </div>
-            <a href="#contacts" class="btn-secondary">Записаться</a>
+            <a href="#contacts" class="btn-primary">Записаться</a>
         </div>
     </section>
 
-    <!-- ===== ПОДХОД ===== -->
     <section class="section container" id="approach">
         <div class="section-header">
             <span class="line"></span>
@@ -800,7 +733,6 @@
         </div>
     </section>
 
-    <!-- ===== КОНТАКТЫ ===== -->
     <section class="section container" id="contacts">
         <div class="section-header">
             <span class="line"></span>
@@ -810,7 +742,7 @@
         <div class="contacts-wrapper">
             <div class="contacts-left">
                 <a href="tel:+79242555609">+7 924 255 56 09 (София)</a>
-                <a href="mailto:sofiya.doroshenko@email.ru">sofiya.doroshenko@email.ru</a>
+                <a href="mailto:sofia_doroshenko.life@mail.ru">sofia_doroshenko.life@mail.ru</a>
             </div>
             <div class="contacts-right">
                 <a href="https://max.ru/join/RwKSIjdECBzCqfDwxZQSkXcdDEfIs_-SLjHrSmzpTfw" target="_blank" class="social">MAX</a>
@@ -821,12 +753,10 @@
         </div>
     </section>
 
-    <!-- ===== ПОДВАЛ ===== -->
     <footer class="container">
         <p>BADMINTON DORS CLUB — Сайт создан — <a href="https://algoritm-delo.ru/" target="_blank">Алгоритм.Дело</a></p>
     </footer>
 
-    <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">×</button>
@@ -856,18 +786,17 @@
         </div>
     </div>
 
-    <!-- ===== СКРИПТ ===== -->
     <script>
         (function() {
             emailjs.init({
-                publicKey: 'YCCpp94A7OHl4F3Jb'
+                publicKey: 'YCCpp94A7OHI4F3Jb'
             });
         })();
 
         const servicePrices = {
             'Индивидуальная тренировка': { display: '2 500 ₽ <small>/ час</small>', bottom: '2 500 ₽ / час' },
-            'Мини-группа': { display: '1 250 ₽', bottom: '1 250 ₽ с человека' },
-            'Групповая тренировка': { display: '1 000 ₽', bottom: '1 000 ₽ с человека' },
+            'Мини-группа': { display: '1 250 ₽ <small>с человека</small>', bottom: '1 250 ₽ с человека' },
+            'Групповая тренировка': { display: '1 000 ₽ <small>с человека</small>', bottom: '1 000 ₽ с человека' },
             'Игровая тренировка': { display: '2 500 ₽ <small>/ час</small>', bottom: '2 500 ₽ / час' }
         };
 
@@ -958,7 +887,7 @@
                 .catch(function(error) {
                     console.error('Ошибка:', error);
                     statusText.style.color = '#F04E8B';
-                    statusText.textContent = 'Ошибка. Напишите мне в Telegram или WhatsApp.';
+                    statusText.textContent = 'Ошибка. Напишите мне в Telegram: @dors_of_course';
                 });
         });
     </script>
