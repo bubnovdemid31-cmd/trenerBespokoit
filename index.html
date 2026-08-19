@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тренер Беспокоит | Персональные тренировки</title>
+    <title>BADMINTON DORS CLUB | Тренер София Дорошенко</title>
     
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0b1a1a 0%, #0e2626 100%);
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a2e;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -31,354 +31,804 @@
         /* ===== КНОПКИ ===== */
         .btn-primary {
             display: inline-block;
-            background: #ffffff;
-            color: #0b1a1a;
-            font-weight: 800;
-            font-size: 16px;
+            background: #00AEEF;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 16px 40px;
-            border-radius: 50px;
+            padding: 14px 36px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 174, 239, 0.3);
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
-            background: #e6e6e6;
+            box-shadow: 0 8px 30px rgba(0, 174, 239, 0.45);
+            background: #0099d6;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background: #F04E8B;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 14px 36px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(240, 78, 139, 0.3);
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(240, 78, 139, 0.45);
+            background: #d93a7a;
         }
         
         .btn-outline {
             display: inline-block;
             background: transparent;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 15px;
-            border: 2px solid #8bb9b9;
-            padding: 12px 30px;
-            border-radius: 50px;
+            color: #00AEEF;
+            font-weight: 600;
+            font-size: 14px;
+            border: 2px solid #00AEEF;
+            padding: 10px 26px;
+            border-radius: 6px;
             transition: all 0.3s ease;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
         .btn-outline:hover {
-            background: #8bb9b9;
-            color: #0b1a1a;
+            background: #00AEEF;
+            color: #ffffff;
         }
 
-        /* ===== ШАПКА (HERO) ===== */
-        .hero { padding: 80px 0 60px; width: 100%; }
-        .hero-grid {
+        /* ===== ШАПКА ===== */
+        .hero { 
+            padding: 30px 0 50px; 
+            width: 100%; 
+            background: #1B2A4A;
+        }
+        .hero-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .hero-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .hero-logo span { color: #00AEEF; }
+        .hero-social {
+            display: flex;
+            gap: 10px;
+        }
+        .hero-social a {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .hero-social a:hover {
+            border-color: #00AEEF;
+            color: #00AEEF;
+        }
+        .hero-main {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
         }
-        .hero-content { display: flex; flex-direction: column; gap: 20px; }
-        .hero-name { font-size: 56px; font-weight: 900; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; }
-        .hero-status { font-size: 22px; font-weight: 600; color: #8bb9b9; letter-spacing: 2px; }
+        .hero-content { display: flex; flex-direction: column; gap: 12px; }
+        .hero-badge {
+            display: inline-block;
+            background: #F04E8B;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            padding: 5px 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            width: fit-content;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-name { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px; 
+            font-weight: 900; 
+            letter-spacing: -1px; 
+            line-height: 1.05; 
+            color: #ffffff;
+        }
+        .hero-name span { color: #00AEEF; }
+        .hero-desc { 
+            font-size: 16px; 
+            color: #b0c4de; 
+            font-weight: 400;
+        }
         .hero-image { display: flex; justify-content: center; align-items: center; }
         .hero-image img {
-            width: 100%; max-width: 450px; height: auto; border-radius: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            width: 100%; max-width: 380px; height: auto; border-radius: 10px;
+            border: 4px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             object-fit: cover;
         }
 
-        /* ===== ЗАГОЛОВКИ СЕКЦИЙ ===== */
-        .section { padding: 60px 0; width: 100%; }
-        .section-title { font-size: 36px; font-weight: 800; text-transform: uppercase; margin-bottom: 40px; text-align: center; letter-spacing: 1px; }
-        .section-title span { color: #8bb9b9; }
-
-        /* ===== НАПРАВЛЕНИЯ ===== */
-        .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .program-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(139, 185, 185, 0.15);
-            padding: 30px; border-radius: 16px; transition: 0.3s; text-align: center;
+        /* ===== ЗАГОЛОВКИ ===== */
+        .section { padding: 55px 0; width: 100%; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
         }
-        .program-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
-        .program-card h3 { font-size: 20px; margin-bottom: 10px; color: #8bb9b9; }
-        .program-card p { font-size: 16px; color: #d1e3e3; margin-bottom: 20px; line-height: 1.5; }
-        .program-card .btn-outline { font-size: 14px; padding: 8px 20px; }
+        .section-header .line {
+            flex: 1;
+            height: 2px;
+            background: #00AEEF;
+            opacity: 0.3;
+            min-width: 20px;
+        }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1B2A4A;
+            white-space: nowrap;
+        }
+        .section-title span { color: #00AEEF; }
 
-        /* ===== ОПЫТ ===== */
-        .experience-wrapper { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 40px; border: 1px solid rgba(139, 185, 185, 0.1); }
-        .exp-top { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px; }
-        .exp-item { text-align: center; }
-        .exp-item h4 { color: #8bb9b9; font-size: 18px; margin-bottom: 8px; }
-        .exp-item p { color: #cce3e3; font-size: 16px; }
-        .exp-bottom { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px; }
-        .exp-numbers { text-align: center; }
-        .exp-numbers span { display: block; font-size: 36px; font-weight: 900; color: #ffffff; }
-        .exp-numbers small { color: #8bb9b9; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        /* ===== БЛОК "ФАКТЫ О БАДМИНТОНЕ" ===== */
+        .facts-block {
+            background: #3C3F45;
+            border-radius: 8px;
+            padding: 30px 35px;
+            border-left: 4px solid #00AEEF;
+        }
+        .facts-block h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .facts-block p { color: #c0c0c0; }
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .facts-grid .fact {
+            font-size: 14px;
+            color: #ffffff;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+        .facts-grid .fact strong { color: #00AEEF; }
 
-        /* ===== ФОРМАТЫ РАБОТЫ ===== */
+        /* ===== О ТРЕНЕРЕ ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: start;
+        }
+        .about-text { display: flex; flex-direction: column; gap: 14px; }
+        .about-text p { font-size: 15px; color: #1a1a2e; line-height: 1.7; }
+        .about-text .highlight {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #1B2A4A;
+            font-size: 16px;
+        }
+        .about-achievements {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .about-achievements .ach {
+            background: #3C3F45;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border-left: 3px solid #00AEEF;
+            font-size: 14px;
+            color: #ffffff;
+        }
+        .about-achievements .ach strong {
+            font-family: 'Montserrat', sans-serif;
+            color: #00AEEF;
+        }
+
+        /* ===== ДЕТСКИЕ ТРЕНИРОВКИ ===== */
+        .kids-block {
+            background: #3C3F45;
+            border-radius: 8px;
+            padding: 30px 35px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .kids-block h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+        .kids-block h3 span { color: #00AEEF; }
+        .kids-block .sub {
+            font-size: 14px;
+            color: #c0c0c0;
+            margin-bottom: 14px;
+        }
+        .kids-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 25px;
+        }
+        .kids-grid li {
+            list-style: none;
+            font-size: 14px;
+            color: #ffffff;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .kids-grid li::before {
+            content: "—";
+            color: #00AEEF;
+            font-weight: 700;
+        }
+        .kids-block .kids-desc {
+            font-size: 14px;
+            color: #c0c0c0;
+            margin-top: 8px;
+        }
+
+        /* ===== УСЛУГИ (ВЗРОСЛЫЕ) ===== */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
         }
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(139, 185, 185, 0.2);
-            border-radius: 20px;
-            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e8ecf1;
+            border-radius: 8px;
+            padding: 24px 22px;
             transition: 0.3s;
-            display: flex;
-            flex-direction: column;
+            border-top: 4px solid #00AEEF;
         }
-        .service-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
-        .service-card h3 { font-size: 22px; color: #ffffff; margin-bottom: 5px; }
-        .service-card .price-tag { font-size: 28px; font-weight: 900; color: #8bb9b9; margin-bottom: 15px; display: block; }
-        .service-card ul { list-style: none; padding: 0; margin: 15px 0 25px; flex: 1; }
-        .service-card ul li { padding: 6px 0; color: #cce3e3; font-size: 15px; display: flex; align-items: center; gap: 10px; }
-        .service-card ul li::before { content: "—"; color: #8bb9b9; }
-        .service-card p { color: #cce3e3; font-size: 16px; }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 174, 239, 0.08);
+        }
+        .service-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            color: #1B2A4A;
+            margin-bottom: 4px;
+        }
+        .service-card .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: #00AEEF;
+            display: block;
+            margin: 6px 0 10px;
+        }
+        .service-card .price small {
+            font-size: 14px;
+            font-weight: 400;
+            color: #1a1a2e;
+        }
+        .service-card .price-sub {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1B2A4A;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 14px;
+        }
+        .service-card ul li {
+            padding: 3px 0;
+            color: #1a1a2e;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-card ul li::before {
+            content: "—";
+            color: #00AEEF;
+            font-weight: 700;
+        }
+        .service-card .btn-primary {
+            padding: 10px 28px;
+            font-size: 13px;
+        }
+        .service-card .btn-secondary {
+            padding: 10px 28px;
+            font-size: 13px;
+        }
+
+        /* ===== АКЦИЯ ===== */
+        .promo-block {
+            background: #1B2A4A;
+            border-radius: 8px;
+            padding: 28px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border: 1px solid rgba(0, 174, 239, 0.15);
+        }
+        .promo-block .text {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .promo-block .text span {
+            color: #F04E8B;
+            font-weight: 800;
+        }
+        .promo-block .text .sub {
+            font-size: 14px;
+            font-weight: 400;
+            color: #c0c0c0;
+        }
+
+        /* ===== ПОДХОД ===== */
+        .approach-block {
+            background: #3C3F45;
+            border-radius: 8px;
+            padding: 30px 35px;
+            border-left: 4px solid #00AEEF;
+        }
+        .approach-block h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .approach-block p {
+            font-size: 15px;
+            color: #c0c0c0;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .approach-block p strong { color: #ffffff; }
+        .approach-block .tags {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .approach-block .tags span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            padding: 4px 14px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .approach-block .tags span strong { color: #00AEEF; }
 
         /* ===== КОНТАКТЫ ===== */
-        .contacts-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(139, 185, 185, 0.2); }
-        .contacts-info { display: flex; flex-direction: column; gap: 15px; }
-        .contacts-info a { font-size: 18px; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
-        .contacts-info a:hover { color: #8bb9b9; }
-        .contacts-socials { display: flex; gap: 15px; }
-        .contacts-socials span { padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; font-size: 14px; }
+        .contacts-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: #3C3F45;
+            padding: 28px 35px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .contacts-left { display: flex; flex-direction: column; gap: 8px; }
+        .contacts-left a { 
+            font-size: 16px; 
+            font-weight: 600; 
+            transition: 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #ffffff;
+        }
+        .contacts-left a:hover { color: #00AEEF; }
+        .contacts-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .contacts-right .social {
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .contacts-right .social:hover {
+            border-color: #00AEEF;
+            background: #00AEEF;
+            color: #ffffff;
+        }
 
         /* ===== МОДАЛЬНОЕ ОКНО ===== */
         .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px); display: none; align-items: center;
+            position: fixed; inset: 0; background: rgba(27, 42, 74, 0.7);
+            backdrop-filter: blur(4px); display: none; align-items: center;
             justify-content: center; z-index: 1000; padding: 20px;
         }
         .modal-overlay.active { display: flex; }
         .modal-box {
-            background: #122424; border: 1px solid rgba(139, 185, 185, 0.3);
-            max-width: 480px; width: 100%; border-radius: 24px;
-            padding: 40px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            background: #ffffff; 
+            border: 1px solid #e8ecf1;
+            max-width: 420px; width: 100%; border-radius: 8px;
+            padding: 32px 28px; 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
             position: relative; animation: fadeUp 0.3s ease;
         }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .modal-close {
-            position: absolute; top: 15px; right: 20px; background: none;
-            border: none; color: #8bb9b9; font-size: 28px; cursor: pointer;
+            position: absolute; top: 10px; right: 16px; background: none;
+            border: none; color: #1a1a2e; font-size: 26px; cursor: pointer;
             transition: 0.2s;
         }
-        .modal-close:hover { color: #ffffff; transform: rotate(90deg); }
+        .modal-close:hover { color: #00AEEF; transform: rotate(90deg); }
         
-        .modal-top-price { text-align: center; font-size: 42px; font-weight: 900; color: #ffffff; margin-bottom: 5px; transition: 0.2s; line-height: 1.2; }
-        
-        .form-group { margin-bottom: 16px; }
-        .form-group input, .form-group select {
-            width: 100%; padding: 14px 16px; border-radius: 12px;
-            border: 1px solid rgba(139, 185, 185, 0.3); background: rgba(255, 255, 255, 0.05);
-            color: #ffffff; font-size: 16px; font-family: inherit; outline: none; transition: 0.2s;
+        .modal-top-price { 
+            font-family: 'Montserrat', sans-serif;
+            text-align: center; 
+            font-size: 30px; 
+            font-weight: 900; 
+            color: #00AEEF; 
+            margin-bottom: 2px; 
         }
-        .form-group input:focus, .form-group select:focus { border-color: #8bb9b9; background: rgba(255, 255, 255, 0.1); }
-        .form-group input::placeholder { color: #7a9999; }
-        .form-group select option { background: #0b1a1a; color: #fff; }
+        .modal-top-price small { 
+            font-size: 15px; 
+            font-weight: 400; 
+            color: #1a1a2e; 
+        }
+        .modal-sub {
+            text-align: center; 
+            color: #1a1a2e; 
+            margin-bottom: 16px; 
+            font-size: 13px; 
+        }
+        .form-group { margin-bottom: 14px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px 14px; border-radius: 6px;
+            border: 1px solid #dce0e6; background: #f5f7fa;
+            color: #1a1a2e; font-size: 15px; font-family: 'Montserrat', sans-serif; outline: none; transition: 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus { 
+            border-color: #00AEEF; 
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.08);
+        }
+        .form-group input::placeholder { color: #7a8a9e; }
+        .form-group select option { background: #ffffff; color: #1a1a2e; }
         
-        .modal-bottom-price { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); color: #cce3e3; font-size: 15px; transition: 0.2s; }
-        .modal-bottom-price strong { font-size: 20px; color: #ffffff; }
-        
-        #formStatus { text-align: center; margin-top: 15px; font-weight: 600; min-height: 24px; color: #8bb9b9; }
+        .modal-bottom-price { 
+            text-align: center; 
+            margin-top: 14px; 
+            padding-top: 12px; 
+            border-top: 1px solid #e8ecf1; 
+            color: #1a1a2e; 
+            font-size: 14px; 
+        }
+        .modal-bottom-price strong { color: #00AEEF; }
+        #formStatus { text-align: center; margin-top: 12px; font-weight: 600; min-height: 22px; color: #00AEEF; }
 
         /* ===== ПОДВАЛ ===== */
-        footer { width: 100%; padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px; text-align: center; font-size: 14px; color: #7a9999; }
-        footer a { color: #8bb9b9; font-weight: 600; transition: 0.3s; }
-        footer a:hover { color: #ffffff; }
+        footer { 
+            width: 100%; 
+            padding: 22px 0; 
+            border-top: 1px solid #e8ecf1; 
+            margin-top: 20px; 
+            text-align: center; 
+            font-size: 13px; 
+            color: #7a8a9e; 
+        }
+        footer a { color: #00AEEF; font-weight: 600; transition: 0.2s; }
+        footer a:hover { color: #1B2A4A; }
 
         /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .hero-name { font-size: 40px; }
-            .program-grid, .exp-top { grid-template-columns: 1fr; }
+            .hero-main { grid-template-columns: 1fr; text-align: center; gap: 25px; }
+            .hero-name { font-size: 34px; }
+            .hero-badge { margin-left: auto; margin-right: auto; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-top { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr 1fr; }
+            .kids-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
-            .hero-name { font-size: 32px; }
+            .hero-name { font-size: 28px; }
+            .hero-social { justify-content: center; }
+            .hero-social a { font-size: 12px; padding: 4px 10px; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .kids-grid { grid-template-columns: 1fr; }
+            .about-achievements { grid-template-columns: 1fr; }
+            .section-title { font-size: 20px; white-space: normal; }
+            .section-header .line { min-width: 15px; }
             .services-grid { grid-template-columns: 1fr; }
             .contacts-wrapper { flex-direction: column; text-align: center; }
-            .contacts-info a { justify-content: center; }
-            .btn-primary, .btn-outline { width: 100%; }
+            .contacts-left a { justify-content: center; }
+            .contacts-right { justify-content: center; }
+            .btn-primary, .btn-secondary, .btn-outline { width: 100%; }
+            .promo-block { flex-direction: column; text-align: center; }
+            .facts-block { padding: 20px; }
+            .kids-block { padding: 20px; }
+            .approach-block { padding: 20px; }
+            .service-card { padding: 18px 16px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== ШАПКА / HERO ===== -->
-    <section class="hero container">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <div class="hero-status">Тренер по физической подготовке</div>
-                <h1 class="hero-name">Данил Зимин</h1>
-                <div>
-                    <a href="#contacts" class="btn-primary">Записаться</a>
+    <!-- ===== ШАПКА ===== -->
+    <section class="hero">
+        <div class="container hero-wrapper">
+            <div class="hero-top">
+                <div class="hero-logo">BADMINTON <span>DORS</span> CLUB</div>
+                <div class="hero-social">
+                    <a href="https://max.ru/join/RwKSIjdECBzCqfDwxZQSkXcdDEfIs_-SLjHrSmzpTfw" target="_blank">MAX</a>
+                    <a href="https://vk.ru/sofiklife" target="_blank">VK</a>
+                    <a href="https://t.me/dors_of_course" target="_blank">Telegram</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="Resources/trainer.jpg" alt="Фото тренера">
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== НАПРАВЛЕНИЯ ===== -->
-    <section class="section container" id="directions">
-        <h2 class="section-title">
-            <span>Направ</span><span>ления</span>
-        </h2>
-        <div class="program-grid">
-            <div class="program-card">
-                <h3>ОФП для детей</h3>
-                <p>Общее укрепление организма с целью профилактики травм и болезней опорно-двигательного аппарата, а так же сердечно-сосудистой системы для здорового и гармоничного развития ребенка.</p>
-                <a href="programs.html#ofp" class="btn-outline">Подробнее</a>
-            </div>
-            <div class="program-card">
-                <h3>Силовая подготовка</h3>
-                <p>Программы для спортсменов, направленные на рост силовых показателей и взрывной силы.</p>
-                <a href="programs.html#sila" class="btn-outline">Подробнее</a>
-            </div>
-            <div class="program-card">
-                <h3>Фитнес / Кондиция</h3>
-                <p>Общая кондиционная подготовка, коррекция фигуры, работа над выносливостью и тонусом мышц.</p>
-                <a href="programs.html#fitness" class="btn-outline">Подробнее</a>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="programs.html" class="btn-primary">Все программы и цены</a>
-        </div>
-    </section>
-
-    <!-- ===== ОПЫТ ===== -->
-    <section class="section container" id="experience">
-        <h2 class="section-title">
-            <span>О</span><span>пыт</span>
-        </h2>
-        <div class="experience-wrapper">
-            <div class="exp-top">
-                <div class="exp-item">
-                    <h4>«СК Чемпион»</h4>
-                    <p>Тренерский состав</p>
+            <div class="hero-main">
+                <div class="hero-content">
+                    <div class="hero-badge">Тренер по бадминтону</div>
+                    <h1 class="hero-name">София <span>Дорошенко</span></h1>
+                    <p class="hero-desc">Тренер по бадминтону для детей и взрослых. Многократный победитель и призёр всероссийских и международных соревнований, призёр первенства Европы.</p>
+                    <div>
+                        <a href="#contacts" class="btn-primary">Записаться</a>
+                    </div>
                 </div>
-                <div class="exp-item">
-                    <h4>МБОУ СОШ 46</h4>
-                    <p>Преподаватель физической культуры</p>
-                </div>
-                <div class="exp-item">
-                    <h4>ПБК Динамо-Владивосток</h4>
-                    <p>Тренер по физической подготовке</p>
-                </div>
-                <div class="exp-item">
-                    <h4>Академия Динамо им. Льва Яшина</h4>
-                    <p>Специалист по ОФП / Кондиции</p>
-                </div>
-                <div class="exp-item">
-                    <h4>«СК Титул»</h4>
-                    <p>Персональный тренер</p>
-                </div>
-            </div>
-            <div class="exp-bottom">
-                <div class="exp-numbers">
-                    <span>С 2018</span>
-                    <small>Года в спорте</small>
+                <div class="hero-image">
+                    <img src="Resources/Trainer.jpg" alt="София Дорошенко — тренер по бадминтону">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ФОРМАТЫ РАБОТЫ ===== -->
-    <section class="section container" id="price">
-        <h2 class="section-title">
-            <span>Форма</span><span>ты</span>
-            <br>
-            <span>рабо</span><span>ты</span>
-        </h2>
-        
+    <!-- ===== ФАКТЫ О БАДМИНТОНЕ ===== -->
+    <section class="section container">
+        <div class="facts-block">
+            <h3>Факты о бадминтоне</h3>
+            <p style="font-size: 15px; margin-bottom: 12px;">Бадминтон — это не просто игра, где вы играли во дворе. Это спорт, который развивает скорость, координацию, выносливость, реакцию, мышление и уверенность в себе.</p>
+            <div class="facts-grid">
+                <div class="fact"><strong>Входит</strong> в программу подготовки космонавтов</div>
+                <div class="fact"><strong>Улучшает</strong> зрение и работу мозга</div>
+                <div class="fact"><strong>В. В. Путин</strong> тоже играет в бадминтон</div>
+                <div class="fact"><strong>Олимпийский</strong> вид спорта</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== О ТРЕНЕРЕ ===== -->
+    <section class="section container" id="about">
+        <div class="section-header">
+            <span class="line"></span>
+            <h2 class="section-title"><span>О</span> тренере</h2>
+            <span class="line"></span>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><span class="highlight">Меня зовут Дорошенко София Вячеславовна.</span> Я — тренер по бадминтону и спортсмен с большим соревновательным опытом. Являюсь многократным победителем и призёром всероссийских и международных соревнований, призёром первенства Европы.</p>
+                <p>Сегодня помогаю детям и взрослым открывать для себя бадминтон, совершенствовать технику, развивать физические качества и получать удовольствие от тренировочного процесса.</p>
+            </div>
+            <div class="about-achievements">
+                <div class="ach"><strong>Многократный</strong> победитель всероссийских соревнований</div>
+                <div class="ach"><strong>Призёр</strong> международных соревнований</div>
+                <div class="ach"><strong>Призёр</strong> первенства Европы</div>
+                <div class="ach"><strong>Большой</strong> соревновательный опыт</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ДЕТСКИЕ ТРЕНИРОВКИ ===== -->
+    <section class="section container" id="kids">
+        <div class="section-header">
+            <span class="line"></span>
+            <h2 class="section-title"><span>Детские</span> тренировки</h2>
+            <span class="line"></span>
+        </div>
+        <div class="kids-block">
+            <h3>Тренировки для детей <span>6–14 лет</span></h3>
+            <p class="sub">Провожу секционные занятия по бадминтону для детей от 6 до 14 лет на бесплатной основе. Главная задача детских тренировок — не только научить ребёнка играть в бадминтон, но и создать прочную основу для его физического и спортивного развития.</p>
+            <p style="font-size: 14px; color: #c0c0c0; margin-bottom: 12px; font-weight: 600;">На занятиях дети:</p>
+            <ul class="kids-grid">
+                <li>осваивают базовую технику бадминтона</li>
+                <li>развивают координацию, скорость и реакцию</li>
+                <li>укрепляют физическую подготовку</li>
+                <li>учатся правильно двигаться по площадке</li>
+                <li>развивают внимание и игровое мышление</li>
+                <li>учатся работать в команде и преодолевать трудности</li>
+                <li>постепенно приобретают уверенность в своих силах</li>
+            </ul>
+            <p class="kids-desc">Для каждого ребёнка важно создать комфортную атмосферу, в которой он сможет развиваться в собственном темпе. Для тех, кто захочет связать себя со спортом более серьёзно, тренировки могут стать первым шагом к соревновательному бадминтону.</p>
+        </div>
+    </section>
+
+    <!-- ===== ВЗРОСЛЫЕ ТРЕНИРОВКИ ===== -->
+    <section class="section container" id="adults">
+        <div class="section-header">
+            <span class="line"></span>
+            <h2 class="section-title"><span>Взрослые</span> тренировки</h2>
+            <span class="line"></span>
+        </div>
+        <p style="font-size: 15px; color: #1a1a2e; margin-bottom: 24px; max-width: 800px;">Бадминтон подходит абсолютно для любого возраста и уровня подготовки. Коммерческие тренировки предназначены для взрослых, которые хотят научиться играть с нуля, улучшить технику, повысить физическую форму, подготовиться к соревнованиям или просто получать больше удовольствия от игры.</p>
+
         <div class="services-grid">
-            
-            <!-- Услуга 1 -->
+            <!-- Индивидуальные -->
             <div class="service-card">
-                <h3>Индивидуальная тренировка</h3>
-                <span class="price-tag">3 000 ₽ / занятие</span>
-                <p>Персональная работа с тренером один на один. Полная концентрация на ваших целях и технике.</p>
-                <a href="#" onclick="openModal('Индивидуальная тренировка', '3 000 ₽ / занятие'); return false;" class="btn-primary" style="margin-top: auto;">Записаться</a>
-            </div>
-
-            <!-- Услуга 2 -->
-            <div class="service-card">
-                <h3>Онлайн-Консультация</h3>
-                <span class="price-tag">5 000 ₽</span>
+                <h4>Индивидуальные тренировки</h4>
+                <span class="price">2 500 ₽ <small>/ час</small></span>
+                <span class="price-sub">Пара — 3 000 ₽ / час</span>
                 <ul>
-                    <li>Анализ образа жизни</li>
-                    <li>Рекомендации по питанию</li>
-                    <li>Рекомендации по тренировочному процессу</li>
+                    <li>индивидуальная программа</li>
+                    <li>работа один на один с тренером</li>
+                    <li>коррекция техники</li>
+                    <li>предоставление инвентаря</li>
+                    <li>аренда корта</li>
                 </ul>
-                <a href="#" onclick="openModal('Онлайн-Консультация', '5 000 ₽'); return false;" class="btn-primary">Записаться</a>
+                <p style="font-size: 14px; color: #1a1a2e; margin-bottom: 14px;">Индивидуальные занятия подходят тем, кто хочет получить максимум внимания тренера и максимально эффективно работать над конкретными элементами своей игры.</p>
+                <a href="#" onclick="openModal('Индивидуальная тренировка', '2 500 ₽ / час'); return false;" class="btn-secondary">Записаться</a>
             </div>
 
-            <!-- Услуга 3 -->
+            <!-- Мини-группы -->
             <div class="service-card">
-                <h3>Онлайн-Сопровождение</h3>
-                <span class="price-tag">10 000 ₽ / месяц</span>
+                <h4>Мини-группы</h4>
+                <span class="price">1 250 ₽ <small>с человека</small></span>
+                <span class="price-sub">4 человека — 1,5 часа</span>
                 <ul>
-                    <li>Тренировочный план</li>
-                    <li>Коррекция питания</li>
-                    <li>Анализ режима дня</li>
+                    <li>тренировка с тренером</li>
+                    <li>работа над техникой</li>
+                    <li>предоставление инвентаря</li>
+                    <li>аренда корта</li>
                 </ul>
-                <a href="#" onclick="openModal('Онлайн-Сопровождение', '10 000 ₽ / месяц'); return false;" class="btn-primary">Записаться</a>
+                <p style="font-size: 14px; color: #1a1a2e; margin-bottom: 14px;">Оптимальный вариант для тех, кто хочет сочетать преимущества персональной работы с динамикой небольшой группы.</p>
+                <a href="#" onclick="openModal('Мини-группа', '1 250 ₽'); return false;" class="btn-primary">Записаться</a>
             </div>
 
-            <!-- Услуга 4 -->
+            <!-- Групповые -->
             <div class="service-card">
-                <h3>Групповые занятия</h3>
-                <span class="price-tag">12 000 ₽ / месяц (12 занятий)</span>
+                <h4>Групповые тренировки</h4>
+                <span class="price">1 000 ₽ <small>с человека</small></span>
+                <span class="price-sub">До 12 человек — 1,5 часа</span>
                 <ul>
-                    <li>12 занятий в месяц</li>
+                    <li>техническая подготовка</li>
+                    <li>игровые упражнения</li>
+                    <li>индивидуальная коррекция</li>
+                    <li>игровая практика</li>
+                    <li>работа над тактикой</li>
                 </ul>
-                <a href="#" onclick="openModal('Групповые занятия', '12 000 ₽ / месяц (12 занятий)'); return false;" class="btn-primary" style="margin-top: auto;">Записаться</a>
+                <p style="font-size: 14px; color: #1a1a2e; margin-bottom: 14px;">Динамичный формат для тех, кто хочет тренироваться в компании и одновременно получать профессиональные рекомендации тренера.</p>
+                <a href="#" onclick="openModal('Групповая тренировка', '1 000 ₽'); return false;" class="btn-primary">Записаться</a>
             </div>
 
+            <!-- Игровые -->
+            <div class="service-card">
+                <h4>Игровые тренировки</h4>
+                <span class="price">2 500 ₽ <small>/ час</small></span>
+                <span class="price-sub">Пара — 3 000 ₽ / час</span>
+                <ul>
+                    <li>игровые ситуации</li>
+                    <li>анализ тактики</li>
+                    <li>работа над ошибками</li>
+                    <li>инвентарь и аренда включены</li>
+                </ul>
+                <p style="font-size: 14px; color: #1a1a2e; margin-bottom: 14px;">Если вы уже умеете играть и хотите сделать свою игру более эффективной, игровой формат поможет перенести полученные навыки непосредственно в матч.</p>
+                <a href="#" onclick="openModal('Игровая тренировка', '2 500 ₽ / час'); return false;" class="btn-secondary">Записаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== АКЦИЯ ===== -->
+    <section class="section container">
+        <div class="promo-block">
+            <div class="text">
+                <span>Приводи друга</span> — тренируйся выгоднее!<br>
+                <span class="sub">Приведите друга на тренировку и получите 50% скидку на свою следующую тренировку.<br>Бадминтон — это спорт, которым гораздо интереснее заниматься вместе!</span>
+            </div>
+            <a href="#contacts" class="btn-secondary">Записаться</a>
+        </div>
+    </section>
+
+    <!-- ===== ПОДХОД ===== -->
+    <section class="section container" id="approach">
+        <div class="section-header">
+            <span class="line"></span>
+            <h2 class="section-title"><span>Мой</span> подход</h2>
+            <span class="line"></span>
+        </div>
+        <div class="approach-block">
+            <h3>Мой подход</h3>
+            <p>Я считаю, что хороший тренер — это не только человек, который показывает правильный удар. Это специалист, который умеет видеть особенности каждого спортсмена, понимать его цели и помогать ему совершенствоваться.</p>
+            <p>В работе сочетаю собственный соревновательный опыт с индивидуальным подходом к каждому ученику.</p>
+            <p><strong>Моя цель</strong> — помочь вам или вашему ребёнку полюбить бадминтон, увидеть собственный прогресс и получать удовольствие от каждого занятия.</p>
+            <div class="tags">
+                <span><strong>Детям</strong> — возможность сделать первые шаги в спорте</span>
+                <span><strong>Взрослым</strong> — возможность научиться играть, улучшить свою технику и получать удовольствие от игры</span>
+                <span><strong>Спортсменам</strong> — возможность работать над результатом и двигаться к новым достижениям</span>
+            </div>
         </div>
     </section>
 
     <!-- ===== КОНТАКТЫ ===== -->
     <section class="section container" id="contacts">
-        <h2 class="section-title">
-            <span>Кон</span><span>такты</span>
-        </h2>
+        <div class="section-header">
+            <span class="line"></span>
+            <h2 class="section-title"><span>Кон</span>такты</h2>
+            <span class="line"></span>
+        </div>
         <div class="contacts-wrapper">
-            <div class="contacts-info">
-                <a href="tel:+79643351958">📞 +7 964 335 19 58</a>
-                <a href="mailto:Zimin1221danil@mail.ru">✉️ Zimin1221danil@mail.ru</a>
-                <a href="#">📍 Улица Карбышева, 12в ст2 / Титул</a>
+            <div class="contacts-left">
+                <a href="tel:+79242555609">+7 924 255 56 09 (София)</a>
+                <a href="mailto:sofiya.doroshenko@email.ru">sofiya.doroshenko@email.ru</a>
             </div>
-            <div class="contacts-socials">
-                <span>Telegram</span>
-                <span>MAX</span>
-                <span>VK</span>
+            <div class="contacts-right">
+                <a href="https://max.ru/join/RwKSIjdECBzCqfDwxZQSkXcdDEfIs_-SLjHrSmzpTfw" target="_blank" class="social">MAX</a>
+                <a href="https://vk.ru/sofiklife" target="_blank" class="social">VK</a>
+                <a href="https://t.me/dors_of_course" target="_blank" class="social">Telegram</a>
+                <a href="#" onclick="openModal('', ''); return false;" class="btn-primary">Записаться</a>
             </div>
-            <a href="#" onclick="openModal('', ''); return false;" class="btn-primary">Записаться</a>
         </div>
     </section>
 
     <!-- ===== ПОДВАЛ ===== -->
     <footer class="container">
-        <p>
-            Сайт сделан — 
-            <a href="https://algoritm-delo.ru/" target="_blank">Алгоритм.Дело</a>
-        </p>
+        <p>BADMINTON DORS CLUB — Сайт создан — <a href="https://algoritm-delo.ru/" target="_blank">Алгоритм.Дело</a></p>
     </footer>
 
     <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">×</button>
-            
-            <div class="modal-top-price" id="modalTopPrice">
-                3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>
-            </div>
-            <p style="text-align: center; color: #8bb9b9; margin-bottom: 20px; font-size: 14px; letter-spacing: 1px;">Оставьте заявку, и я свяжусь с вами</p>
+            <div class="modal-top-price" id="modalTopPrice">2 500 ₽ <small>/ час</small></div>
+            <div class="modal-sub">Оставьте заявку, и я свяжусь с вами</div>
 
             <form id="orderForm">
                 <div class="form-group">
@@ -388,88 +838,54 @@
                     <input type="email" id="userEmail" placeholder="Ваша электронная почта">
                 </div>
                 <div class="form-group">
-                    <select id="userProgram" onchange="updateModalPrice()" required>
-                        <option value="">Выберите программу *</option>
+                    <select id="userProgram">
                         <option value="Индивидуальная тренировка">Индивидуальная тренировка</option>
-                        <option value="Онлайн-Консультация">Онлайн-Консультация</option>
-                        <option value="Онлайн-Сопровождение">Онлайн-Сопровождение</option>
-                        <option value="Групповые занятия">Групповые занятия</option>
+                        <option value="Мини-группа">Мини-группа</option>
+                        <option value="Групповая тренировка">Групповая тренировка</option>
+                        <option value="Игровая тренировка">Игровая тренировка</option>
                     </select>
                 </div>
                 <button type="submit" class="btn-primary" style="width: 100%;">Отправить заявку</button>
             </form>
             
-            <div class="modal-bottom-price" id="modalBottomPrice">
-                Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>
-            </div>
+            <div class="modal-bottom-price" id="modalBottomPrice">Стоимость: <strong>2 500 ₽ / час</strong></div>
             <div id="formStatus"></div>
         </div>
     </div>
 
     <!-- ===== СКРИПТ ===== -->
     <script>
-        // Инициализация EmailJS
         (function() {
             emailjs.init({
                 publicKey: '2UMeMhy4aJizV6SAW'
             });
         })();
 
-        // Данные для цен (чтобы они обновлялись внутри модалки)
         const servicePrices = {
-            'Индивидуальная тренировка': {
-                display: '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>',
-                bottom: '3 000 ₽ / занятие'
-            },
-            'Онлайн-Консультация': {
-                display: '5 000 ₽',
-                bottom: '5 000 ₽'
-            },
-            'Онлайн-Сопровождение': {
-                display: '10 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц</span>',
-                bottom: '10 000 ₽ / месяц'
-            },
-            'Групповые занятия': {
-                display: '12 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / месяц (12 занятий)</span>',
-                bottom: '12 000 ₽ / месяц (12 занятий)'
-            }
+            'Индивидуальная тренировка': { display: '2 500 ₽ <small>/ час</small>', bottom: '2 500 ₽ / час' },
+            'Мини-группа': { display: '1 250 ₽', bottom: '1 250 ₽ с человека' },
+            'Групповая тренировка': { display: '1 000 ₽', bottom: '1 000 ₽ с человека' },
+            'Игровая тренировка': { display: '2 500 ₽ <small>/ час</small>', bottom: '2 500 ₽ / час' }
         };
 
-        // Функция обновления цены внутри модалки при выборе в списке
-        function updateModalPrice() {
-            const selected = document.getElementById('userProgram').value;
-            const topPrice = document.getElementById('modalTopPrice');
-            const bottomPrice = document.getElementById('modalBottomPrice');
-
-            if (selected && servicePrices[selected]) {
-                topPrice.innerHTML = servicePrices[selected].display;
-                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>${servicePrices[selected].bottom}</strong>`;
-            } else {
-                topPrice.innerHTML = '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>';
-                bottomPrice.innerHTML = `Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>`;
-            }
-        }
-
-        // Открытие модалки из карточки услуги
         function openModal(programName, programPrice) {
             const modalTop = document.getElementById('modalTopPrice');
             const modalBottom = document.getElementById('modalBottomPrice');
             const modalSelect = document.getElementById('userProgram');
 
-            if (!programName) {
-                modalTop.innerHTML = '3 000 ₽<span style="font-size: 20px; font-weight: 400; color: #8bb9b9;"> / занятие</span>';
-                modalBottom.innerHTML = `Стоимость выбранной программы: <strong>3 000 ₽ / занятие</strong>`;
-                modalSelect.selectedIndex = 0;
-            } else {
-                modalTop.innerHTML = programPrice;
-                modalBottom.innerHTML = `Стоимость выбранной программы: <strong>${programPrice}</strong>`;
-                
-                for(let i = 0; i < modalSelect.options.length; i++) {
-                    if(modalSelect.options[i].value === programName) {
+            if (programName && servicePrices[programName]) {
+                modalTop.innerHTML = servicePrices[programName].display;
+                modalBottom.innerHTML = `Стоимость: <strong>${servicePrices[programName].bottom}</strong>`;
+                for (let i = 0; i < modalSelect.options.length; i++) {
+                    if (modalSelect.options[i].value === programName) {
                         modalSelect.selectedIndex = i;
                         break;
                     }
                 }
+            } else {
+                modalTop.innerHTML = '2 500 ₽ <small>/ час</small>';
+                modalBottom.innerHTML = `Стоимость: <strong>2 500 ₽ / час</strong>`;
+                modalSelect.selectedIndex = 0;
             }
 
             document.getElementById('orderModal').classList.add('active');
@@ -488,7 +904,6 @@
             }
         });
 
-        // ===== ОТПРАВКА ФОРМЫ =====
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -497,13 +912,13 @@
             const program = document.getElementById('userProgram').value;
             const statusText = document.getElementById('formStatus');
 
-            if (!phone || !program) {
-                statusText.style.color = '#ff6b6b';
-                statusText.textContent = 'Пожалуйста, заполните номер телефона и выберите программу.';
+            if (!phone) {
+                statusText.style.color = '#F04E8B';
+                statusText.textContent = 'Пожалуйста, укажите номер телефона.';
                 return;
             }
 
-            statusText.style.color = '#8bb9b9';
+            statusText.style.color = '#00AEEF';
             statusText.textContent = 'Отправка...';
 
             const templateParams = {
@@ -514,8 +929,8 @@
 
             emailjs.send('service_i26cluq', 'template_mmu3kj7', templateParams)
                 .then(function(response) {
-                    statusText.style.color = '#ffffff';
-                    statusText.textContent = '✅ Заявка отправлена! Я свяжусь с вами в ближайшее время.';
+                    statusText.style.color = '#00AEEF';
+                    statusText.textContent = 'Заявка отправлена! Я свяжусь с вами.';
                     document.getElementById('orderForm').reset();
                     
                     setTimeout(() => {
@@ -524,9 +939,9 @@
                     }, 3000);
                 })
                 .catch(function(error) {
-                    console.error('Ошибка отправки:', error);
-                    statusText.style.color = '#ff6b6b';
-                    statusText.textContent = '❌ Ошибка отправки. Попробуйте позже или напишите мне в Telegram.';
+                    console.error('Ошибка:', error);
+                    statusText.style.color = '#F04E8B';
+                    statusText.textContent = 'Ошибка. Напишите мне в Telegram или WhatsApp.';
                 });
         });
     </script>
